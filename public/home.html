@@ -14,6 +14,20 @@
     <label for="select-users">Utilisateurs :</label>
     <select id="select-users" name="select-users">
     </select>
+    <h2>Ajouter une tâche</h2>
+    <form id="form-add-task">
+      <label for="input-text-add">Texte :</label>
+      <input type="text" id="input-text-add" name="input-text-add" />
+      <label for="select-prio-add">Priorité :</label>
+      <select >
+        <option value="NONURGENTE">Non urgente</option>
+        <option value="NORMALE">Normale</option>
+        <option value="URGENTE">Urgente</option>
+        <option value="PRIORITAIRE">Prioritaire</option>
+      </select>
+      <button type="button" onclick="createTask(event)" id="create-task-btn">Créer Tâche</button>
+    </form>
+
     <h2>Liste des tâches</h2>
     <h3>Tâches à faire</h3>
     <div id="div-tasks-not-done"></div>

@@ -1,10 +1,16 @@
+//const { randomUUID } = require('crypto');
+
+//const { enabled } = require("../../app");
+
 let users = [];
 let tasks = [];
+let userId = "empty";
 const endPoint = "https://localhost:4443";
 
 if( document.location.href.toString().includes("home")) {
     console.log("dans home");
     getUsers();
+    document.getElementById("create-task-btn").setAttribute("disabled", true);
 }
 
 function getUsers() {
@@ -35,11 +41,20 @@ function fillSelectUsers(users) {
 
 function addListenerSelectUsers() {
     const selectUsers = document.getElementById("select-users");
-    selectUsers.addEventListener("change", () => {
+    selectUsers.addEventListener("change", (event) => {
+        event.preventDefault();
         console.log("change value :", selectUsers.value);
         if(selectUsers.value !== "empty") {
             console.log("requete tasks by user id");
             getTasksByUserId(selectUsers.value);
+            userId = selectUsers.value;
+            document.getElementById("create-task-btn").disabled = false;
+        }
+        else {
+            document.getElementById("div-tasks-not-done").innerHTML = "";
+            document.getElementById("div-tasks-done").innerHTML = "";
+            userId = "empty";
+            document.getElementById("create-task-btn").setAttribute("disabled", true);
         }
         // faire requete pour recuperer les tasks de cet user
         
@@ -75,4 +90,14 @@ function renderTasks(tasks) {
         htmlContentDone += "<div>"+ "<p>"+ t.text + " / " + t.prio + "</p>" + "<button>Editer</button>" + "<button>Supprimer</button>"+ "</div>"
     });
     divTasksDone.innerHTML = htmlContentDone;
+
+    //ajouter appel fonction pour ajouter les listeners aux boutons
+}
+
+function createTask(event) {
+    event.preventDefault();
+    console.log('clic bouton créer');
+    console.log("userId", userId);
+    //const newTaskID = crypto.randomUUID() : dans le back;
+    // faire requete d'ajout de la tache
 }
