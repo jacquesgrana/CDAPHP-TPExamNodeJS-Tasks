@@ -1,4 +1,3 @@
-//const { randomUUID } = require('crypto');
 
 //const { enabled } = require("../../app");
 
@@ -44,7 +43,7 @@ function addListenerSelectUsers() {
     selectUsers.addEventListener("change", (event) => {
         event.preventDefault();
         console.log("change value :", selectUsers.value);
-        if(selectUsers.value !== "empty") {
+        if(selectUsers.value != "empty") {
             console.log("requete tasks by user id");
             getTasksByUserId(selectUsers.value);
             userId = selectUsers.value;
@@ -98,6 +97,24 @@ function createTask(event) {
     event.preventDefault();
     console.log('clic bouton créer');
     console.log("userId", userId);
+    const textTask = document.getElementById("input-text-add").value;
+    console.log("textTask :", textTask);
+    const prioTask = document.getElementById("select-prio-add").value;
+    console.log("prioTask :", prioTask);
     //const newTaskID = crypto.randomUUID() : dans le back;
     // faire requete d'ajout de la tache
+    const dataJson = {
+    "text": textTask,
+    "prio": prioTask,
+    "done": false,
+    "idUtil": userId};
+
+    const body = JSON.stringify(dataJson);
+    
+    fetch(endPoint+"/users", 
+    {"method": "POST",
+    "headers": { 'Content-Type': 'application/json' },
+    "body": body})
+    .then((data) => data.json())
+    .then((task) => console.log("task créé :", task))
 }

@@ -1,5 +1,6 @@
 const { resolve } = require('path');
-const { users, tasks } = require('../db/db.json')
+const { users, tasks } = require('../db/db.json');
+const { randomUUID } = require("crypto");
 
 exports.homeCtrl = (req, res) => {
   res.sendFile( resolve('public', 'home.html') );
@@ -27,3 +28,32 @@ exports.tasksCtrl = (req, res) => {
   res.json(filteredTasks);
 }
 
+/**
+ * A FINIR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * @param {*} req 
+ * @param {*} res 
+ */
+exports.addTaskCtrl = (req, res) => {
+  console.log("req body :", req.body);
+  const newId = randomUUID();
+}
+/*
+exports.postTask = (req, res) => {
+        const newTodo = req.body;
+        console.log(req.body,req);
+        newTodo.id = randomUUID();
+        console.log(body,newTodo);
+        newTodo.done = false;
+        todos.push(newTodo);
+        updateJSON();
+        res.redirect('/home');
+      };
+*/
+
+
+function updateJSON() {
+  writeFileSync(
+    resolve('db', 'db.json'),
+    JSON.stringify({ todos, users }, null, 2)
+  );
+}

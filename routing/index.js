@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const {
   homeCtrl,
-  servicesCtrl,
-  contactCtrl,
   usersCtrl,
-  tasksCtrl
+  tasksCtrl,
+  addTaskCtrl
 } = require('../controllers/app.ctrl');
 /*
 const {
@@ -13,10 +12,8 @@ const {
 
 router.get('/home', homeCtrl);
 router.get('/users', usersCtrl);
-router.get('/users/:id', tasksCtrl)
-
-router.get('/services', servicesCtrl);
-router.get('/contact', contactCtrl);
+router.get('/users/:id', tasksCtrl);
+router.post('/users', addTaskCtrl)
 
 router.get('*', (req, res) => res.redirect('/home'));
 
