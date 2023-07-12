@@ -1,0 +1,47 @@
+{
+    "tasks" : [
+        {
+            "id": "indexTask1",
+            "text": "faire la vaisselle",
+            "prio": "URGENT",
+            "done": false,
+            "idUtil": "indexUser1"
+        },
+        {
+            "id": "indexTask2",
+            "text": "faire le ménage",
+            "prio": "PRIORITAIRE",
+            "done": false,
+            "idUtil": "indexUser2"
+        },
+        {
+            "id": "indexTask3",
+            "text": "brosser les chats",
+            "prio": "NORMALE",
+            "done": true,
+            "idUtil": "indexUser1"
+        },
+        {
+            "id": "indexTask4",
+            "text": "nourrir les chats",
+            "prio": "URGENT",
+            "done": false,
+            "idUtil": "indexUser3"
+        }
+    ],
+
+    "users" : [
+        {
+            "id": "indexUser1",
+            "name": "Martin"
+        },
+        {
+            "id": "indexUser2",
+            "name": "Machin chose"
+        },
+        {
+            "id": "indexUser3",
+            "name": "Trucmuche"
+        }
+    ]
+}
