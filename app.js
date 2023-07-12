@@ -3,9 +3,12 @@ const express = require('express');
 const app = express();
 const router = require('./routing');
 
+
+
 // CONFIGURATION DE L'APP
 app.use( express.static(resolve('public')) );
-app.use( router );
+app.use(express.text());
 app.use(express.json());
+app.use( router );
 
 module.exports = app;

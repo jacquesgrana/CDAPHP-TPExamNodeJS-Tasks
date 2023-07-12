@@ -12,8 +12,9 @@ const {
 
 router.get('/home', homeCtrl);
 router.get('/users', usersCtrl);
-router.get('/users/:id', tasksCtrl);
-router.post('/users', addTaskCtrl)
+router.post('/users', addTaskCtrl);
+
+router.get('/tasks/user/:id', tasksCtrl);
 
 router.get('*', (req, res) => res.redirect('/home'));
 

@@ -1,19 +1,11 @@
 const { resolve } = require('path');
 const { users, tasks } = require('../db/db.json');
 const { randomUUID } = require("crypto");
+const { writeFileSync} = require("fs");
 
 exports.homeCtrl = (req, res) => {
   res.sendFile( resolve('public', 'home.html') );
 };
-
-exports.servicesCtrl = (req, res) => {
-  // Connexion à la BDD
-  // Récupération des livres
-  // Vérification de la cnx
-  res.end('Services');
-};
-
-exports.contactCtrl = (req, res) => res.end('Contact');
 
 exports.usersCtrl = (req, res) => {
   console.log("appel users ctrl");
@@ -34,8 +26,16 @@ exports.tasksCtrl = (req, res) => {
  * @param {*} res 
  */
 exports.addTaskCtrl = (req, res) => {
-  console.log("req body :", req.body);
-  const newId = randomUUID();
+  console.log("req.body :", req.body);
+  //console.log("JSON.parse(req.body) :", JSON.parse(req.body));
+    const { text, prio, done, idUtil } = req.body;
+    
+    const id = randomUUID();
+    const newTask = { id, text, prio, done, idUtil};
+    //const newTask = createNewTask(text, prio, done, idUtil); // Remplacez cette ligne avec la logique réelle pour créer une tâche
+    tasks.push(newTask);
+    updateJSON();
+    res.status(201).json(newTask);
 }
 /*
 exports.postTask = (req, res) => {
@@ -54,6 +54,6 @@ exports.postTask = (req, res) => {
 function updateJSON() {
   writeFileSync(
     resolve('db', 'db.json'),
-    JSON.stringify({ todos, users }, null, 2)
+    JSON.stringify({ users, tasks }, null, 2)
   );
 }
