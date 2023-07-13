@@ -22,25 +22,11 @@
       "idUtil": "indexUser1"
     },
     {
-      "id": "indexTask4",
-      "text": "nourrir les chats",
-      "prio": "URGENT",
-      "done": false,
-      "idUtil": "indexUser3"
-    },
-    {
       "id": "e6b76c4a-7f89-4273-aae1-2093a081e61d",
       "text": "ggggghhhhh",
       "prio": "PRIORITAIRE",
       "done": false,
       "idUtil": "indexUser3"
-    },
-    {
-      "id": "7a36c5b4-7b57-458c-8eb0-e4040470c6bb",
-      "text": "ggggg",
-      "prio": "NONURGENTE",
-      "done": false,
-      "idUtil": "indexUser1"
     },
     {
       "id": "46b91afd-421a-408f-9c5e-d2dce1b4cf25",

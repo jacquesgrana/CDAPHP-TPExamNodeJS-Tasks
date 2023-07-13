@@ -71,6 +71,14 @@ exports.updateTask = (req, res) => {
   res.status(201).json(newTask);
 }
 
+exports.toggleTaskCtrl = (req, res) => {
+  const id = req.params.id;
+  let taskToUpdate = tasks.find(t => t.id === id);
+  taskToUpdate.done = !taskToUpdate.done;
+  updateJSON();
+  res.status(201).json(taskToUpdate.done);
+}
+
 
 function updateJSON() {
   writeFileSync(

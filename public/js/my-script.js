@@ -71,7 +71,7 @@ function renderTasks(tasks) {
     .filter((t) => t.done === false)
     .forEach((t) => {
       htmlContentNotDone +=
-        "<div>" +
+        "<div class='div-task'>" +
         "<p>" +
         t.text +
         " / " +
@@ -84,13 +84,14 @@ function renderTasks(tasks) {
     });
   divTasksNotDone.innerHTML = htmlContentNotDone;
 
+
   const divTasksDone = document.getElementById("div-tasks-done");
   let htmlContentDone = "";
   tasks
     .filter((t) => t.done === true)
     .forEach((t) => {
       htmlContentDone +=
-        "<div>" +
+        "<div class='div-task'>" +
         "<p>" +
         t.text +
         " / " +
@@ -102,6 +103,34 @@ function renderTasks(tasks) {
         "</div>";
     });
   divTasksDone.innerHTML = htmlContentDone;
+  addListenersToDivsTask();
+}
+
+function addListenersToDivsTask() {
+  const divs = document.getElementsByClassName("div-task");
+  Array.from(divs).forEach(d => {
+    d.addEventListener("click", (event) => {
+      console.log("target : ", event.target);
+      const id = d.childNodes[1].textContent;
+      console.log('clic sur id :', id);
+      // appeler fonction qui fait une requete pour changer le done
+      toggleDoneTask(id);
+      // afficher tasks
+    })
+  });
+}
+
+function toggleDoneTask(id) {
+  const newDone = fetch(`${endPoint}/tasks/toggle/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+  })
+  .then((response) => response.json())
+  .then((done) => {
+    console.log("done :", done);
+    // sinon erreur : uncaught (in promise) typeerror: networkerror when attempting to fetch resource.
+    setTimeout(() => {  getTasksByUserId(userId);; }, 200);
+});
 }
 
 function createTask(event) {
