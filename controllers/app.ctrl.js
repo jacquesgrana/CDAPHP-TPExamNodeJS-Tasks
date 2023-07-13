@@ -57,6 +57,20 @@ exports.deleteTaskCtrl = (req, res) => {
   res.status(200).json(id);
 }
 
+exports.updateTask = (req, res) => {
+  console.log("update task req.body :", req.body);
+  const idUrl = req.params.id;
+  const newTask = req.body;
+  let taskToUpdate = tasks.find(t => t.id === idUrl);
+  //const idTab = tasks.findIndex(taskToUpdate);
+  //tasks[idTab] = newTask;
+  //taskToUpdate = newTask;
+  taskToUpdate.text = newTask.text;
+  taskToUpdate.prio = newTask.prio;
+  updateJSON();
+  res.status(201).json(newTask);
+}
+
 
 function updateJSON() {
   writeFileSync(

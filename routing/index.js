@@ -4,7 +4,8 @@ const {
   usersCtrl,
   tasksCtrl,
   addTaskCtrl,
-  deleteTaskCtrl
+  deleteTaskCtrl,
+  updateTask
 } = require('../controllers/app.ctrl');
 /*
 const {
@@ -13,10 +14,11 @@ const {
 
 router.get('/home', homeCtrl);
 router.get('/users', usersCtrl);
-router.post('/users', addTaskCtrl);
+router.post('/tasks', addTaskCtrl);
 
 router.get('/tasks/user/:id', tasksCtrl);
-router.delete('/tasks/:id', deleteTaskCtrl)
+router.delete('/tasks/:id', deleteTaskCtrl);
+router.patch('/tasks/:id', updateTask);
 
 router.get('*', (req, res) => res.redirect('/home'));
 
