@@ -3,3 +3,13 @@ body {
     color: black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
+
+  .hidden {
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    overflow:hidden;
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+  }

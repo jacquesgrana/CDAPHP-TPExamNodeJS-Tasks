@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const { users, tasks } = require('../db/db.json');
+let { users, tasks } = require('../db/db.json');
 const { randomUUID } = require("crypto");
 const { writeFileSync} = require("fs");
 
@@ -49,6 +49,13 @@ exports.postTask = (req, res) => {
         res.redirect('/home');
       };
 */
+
+exports.deleteTaskCtrl = (req, res) => {
+  const id = req.params.id;
+  tasks = tasks.filter(t => t.id !== id);
+  updateJSON();
+  res.status(200).json(id);
+}
 
 
 function updateJSON() {

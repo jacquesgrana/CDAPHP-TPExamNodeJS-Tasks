@@ -22,20 +22,6 @@
       "idUtil": "indexUser1"
     },
     {
-      "id": "indexTask2",
-      "text": "faire le ménage",
-      "prio": "PRIORITAIRE",
-      "done": false,
-      "idUtil": "indexUser2"
-    },
-    {
-      "id": "indexTask3",
-      "text": "brosser les chats",
-      "prio": "NORMALE",
-      "done": true,
-      "idUtil": "indexUser1"
-    },
-    {
       "id": "indexTask4",
       "text": "nourrir les chats",
       "prio": "URGENT",
@@ -43,18 +29,25 @@
       "idUtil": "indexUser3"
     },
     {
-      "id": "f0e73067-1e23-4da0-abd2-d8010b19616b",
-      "text": "tttttt",
-      "prio": "URGENTE",
+      "id": "e6b76c4a-7f89-4273-aae1-2093a081e61d",
+      "text": "ggggg",
+      "prio": "NONURGENTE",
+      "done": false,
+      "idUtil": "indexUser3"
+    },
+    {
+      "id": "7a36c5b4-7b57-458c-8eb0-e4040470c6bb",
+      "text": "ggggg",
+      "prio": "NONURGENTE",
       "done": false,
       "idUtil": "indexUser1"
     },
     {
-      "id": "82bbeedf-4093-4359-a6ad-68b02973b194",
-      "text": "tttttt",
-      "prio": "URGENTE",
+      "id": "46b91afd-421a-408f-9c5e-d2dce1b4cf25",
+      "text": "ggggg",
+      "prio": "NONURGENTE",
       "done": false,
-      "idUtil": "indexUser3"
+      "idUtil": "indexUser2"
     }
   ]
 }
