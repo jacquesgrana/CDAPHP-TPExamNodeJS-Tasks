@@ -80,7 +80,7 @@ function renderTasks(tasks) {
         "<p class='hidden'>" + t.id + "</p>" + 
         "<button class='btns-edit' onclick='editTask(event, false)'>Editer</button>" +
         "<button class='btns-delete' onclick='deleteTask(event)'>Supprimer</button>" +
-        "</div>";
+        "</div>"
     });
   divTasksNotDone.innerHTML = htmlContentNotDone;
 
@@ -100,7 +100,7 @@ function renderTasks(tasks) {
         "<p class='hidden'>" + t.id + "</p>" + 
         "<button class='btns-edit' onclick='editTask(event, true)'>Editer</button>" +
         "<button class='btns-delete' onclick='deleteTask(event)'>Supprimer</button>" +
-        "</div>";
+        "</div>"
     });
   divTasksDone.innerHTML = htmlContentDone;
   addListenersToDivsTask();
@@ -110,12 +110,12 @@ function addListenersToDivsTask() {
   const divs = document.getElementsByClassName("div-task");
   Array.from(divs).forEach(d => {
     d.addEventListener("click", (event) => {
-      console.log("target : ", event.target);
-      const id = d.childNodes[1].textContent;
-      console.log('clic sur id :', id);
-      // appeler fonction qui fait une requete pour changer le done
-      toggleDoneTask(id);
-      // afficher tasks
+      if(event.target.nodeName !== 'BUTTON') {
+        console.log("target : ", event.target);
+        const id = d.childNodes[1].textContent;
+        console.log('clic sur id :', id);
+        toggleDoneTask(id);
+      }
     })
   });
 }
@@ -129,7 +129,7 @@ function toggleDoneTask(id) {
   .then((done) => {
     console.log("done :", done);
     // sinon erreur : uncaught (in promise) typeerror: networkerror when attempting to fetch resource.
-    setTimeout(() => {  getTasksByUserId(userId);; }, 200);
+    setTimeout(() => {  getTasksByUserId(userId);; }, 400);
 });
 }
 
@@ -155,7 +155,7 @@ function createTask(event) {
       .then((task) => {
         console.log("task créé :", task);
         // sinon erreur : uncaught (in promise) typeerror: networkerror when attempting to fetch resource.
-        setTimeout(() => {  getTasksByUserId(userId);; }, 200);
+        setTimeout(() => {  getTasksByUserId(userId);; }, 400);
     });
   }
 
@@ -173,7 +173,7 @@ function createTask(event) {
       }
     })
     .then((data) => {
-      setTimeout(() => {  getTasksByUserId(userId);; }, 200);
+      setTimeout(() => {  getTasksByUserId(userId);; }, 400);
     });
   }
 
@@ -201,14 +201,14 @@ function createTask(event) {
         <option value="URGENTE" ` + (task.prio === "URGENTE" ? "selected" : "") + `>Urgente</option>
         <option value="PRIORITAIRE" ` + (task.prio === "PRIORITAIRE" ? "selected" : "") + `>Prioritaire</option>
       </select>
-      <button type="button" onclick="updateTask(event)" id="edit-task-btn">Modifier Tâche</button>
+      <button type="button" onclick="updateTask(${task.done})" id="edit-task-btn">Modifier Tâche</button>
     </form>
     `;
     divEdit.innerHTML = html;
     document.getElementById("input-text-edit").value = task.text;
   }
 
-  function updateTask(event, done) {
+  function updateTask(done) {
     console.log("update task");
     const text = document.getElementById("input-text-edit").value;
     const prio = document.getElementById("select-prio-edit").value;
@@ -230,6 +230,6 @@ function createTask(event) {
         console.log("task modifiée :", task);
         document.getElementById("div-edit-task").innerHTML = "";
         // sinon erreur : uncaught (in promise) typeerror: networkerror when attempting to fetch resource.
-        setTimeout(() => {  getTasksByUserId(userId);; }, 200);
+        setTimeout(() => {  getTasksByUserId(userId);; }, 400);
     });
   }
