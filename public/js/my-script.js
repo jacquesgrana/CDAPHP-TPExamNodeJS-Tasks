@@ -96,7 +96,9 @@ function renderTasks(tasks) {
         "<p>" +
         t.text +
         " / " +
+        "<span class='span-text-prio'>" +
         t.prio +
+        "</span>" +
         "</p>" +
         "<p class='hidden'>" + t.id + "</p>" + 
         "<button class='btns-edit btn btn-primary' onclick='editTask(event, false)'>Editer</button>" +
@@ -116,7 +118,9 @@ function renderTasks(tasks) {
         "<p>" +
         t.text +
         " / " +
+        "<span class='span-text-prio'>" +
         t.prio +
+        "</span>" +
         "</p>" +
         "<p class='hidden'>" + t.id + "</p>" + 
         "<button class='btns-edit btn btn-primary' onclick='editTask(event, true)'>Editer</button>" +
@@ -125,6 +129,31 @@ function renderTasks(tasks) {
     });
   divTasksDone.innerHTML = htmlContentDone;
   addListenersToDivsTask();
+  setSpansPrioColor();
+}
+
+function setSpansPrioColor() {
+  const spans = document.getElementsByClassName("span-text-prio");
+  Array.from(spans).forEach(s => {
+    switch(s.textContent) {
+      case "NONURGENTE" :
+        console.log('NONURGENTE');
+        s.classList.add("nonurgent-color");
+        break;
+        case "NORMALE" :
+          console.log('NORMALE');
+          s.classList.add("normal-color");
+        break;
+        case "URGENTE" :
+          console.log('URGENTE');
+          s.classList.add("urgent-color");
+        break;
+        case "PRIORITAIRE" :
+          console.log('PRIORITAIRE');
+          s.classList.add("prioritary-color");
+        break;
+    }
+  });
 }
 
 function addListenersToDivsTask() {

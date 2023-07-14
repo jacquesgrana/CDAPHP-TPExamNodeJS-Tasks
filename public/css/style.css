@@ -22,6 +22,10 @@ body {
     margin-top: 20px;
   }
 
+  .div-task:hover {
+    background-color: rgb(196, 196, 196);
+  }
+
   .div-edit-task-class {
     background-color: rgb(170, 169, 169);
   }
@@ -42,3 +46,28 @@ body {
   .paddings {
     padding: 20px;
   }
+
+  .nonurgent-color {
+    color : green;
+  }
+
+  .normal-color {
+    color : blue;
+  }
+
+  .urgent-color {
+    color : orange;
+  }
+
+  .prioritary-color {
+    color: red;
+  }
+
+  /*
+return "nonurgent-color";
+      case "NORMALE" :
+      return "normal-color";
+      case "URGENTE" :
+      return "urgent-color";
+      case "PRIORITAIRE" :
+  */
