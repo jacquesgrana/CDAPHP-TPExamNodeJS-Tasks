@@ -37,9 +37,9 @@
     },
     {
       "id": "32b034fe-99e5-4329-8521-5c36655e14db",
-      "text": "gggggfhhhh",
-      "prio": "NORMALE",
-      "done": false,
+      "text": "laver la voiture",
+      "prio": "URGENTE",
+      "done": true,
       "idUtil": "indexUser2"
     }
   ]

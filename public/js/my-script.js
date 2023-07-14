@@ -10,6 +10,7 @@ const endPoint = "https://localhost:4443";
 if (document.location.href.toString().includes("home")) {
   getUsers();
   document.getElementById("create-task-btn").setAttribute("disabled", true);
+  document.getElementById("select-prio-filter").setAttribute("disabled", true);
 }
 
 function getUsers() {
@@ -21,6 +22,7 @@ function getUsers() {
       users = data;
       fillSelectUsers(users);
       addListenerSelectUsers();
+      addListenerSelectFilters();
     });
 }
 
@@ -34,6 +36,21 @@ function fillSelectUsers(users) {
   selectUsers.innerHTML = htmlContent;
 }
 
+function addListenerSelectFilters() {
+  const selectFilters = document.getElementById("select-prio-filter");
+  let filteredTasks = tasks.slice();
+  selectFilters.addEventListener("change", () => {
+    const selectedFilter = selectFilters.value;
+    if(selectedFilter === "TOUTES") {
+      filteredTasks = tasks.slice();
+    }
+    else {
+      filteredTasks = tasks.filter(t => t.prio == selectedFilter);
+    }
+    renderTasks(filteredTasks);
+  });
+}
+
 function addListenerSelectUsers() {
   const selectUsers = document.getElementById("select-users");
   selectUsers.addEventListener("change", (event) => {
@@ -42,11 +59,15 @@ function addListenerSelectUsers() {
       getTasksByUserId(selectUsers.value);
       userId = selectUsers.value;
       document.getElementById("create-task-btn").disabled = false;
+      document.getElementById("select-prio-filter").disabled = false;
+
     } else {
       document.getElementById("div-tasks-not-done").innerHTML = "";
       document.getElementById("div-tasks-done").innerHTML = "";
       userId = "empty";
       document.getElementById("create-task-btn").setAttribute("disabled", true);
+      document.getElementById("select-prio-filter").setAttribute("disabled", true);
+
     }
     // faire requete pour recuperer les tasks de cet user
   });
