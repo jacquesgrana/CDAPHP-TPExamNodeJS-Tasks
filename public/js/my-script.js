@@ -20,11 +20,9 @@ function addListenerChangeInputTextAdd() {
   const inputText = document.getElementById("input-text-add");
   inputText.addEventListener("input", () => {
     if ((inputText.value === "") || (userId === "empty")){
-      console.log('vide');
       document.getElementById("create-task-btn").setAttribute("disabled", true);
     }
     else {
-      console.log('pas vide');
       document.getElementById("create-task-btn").disabled = false;
     }
   })
@@ -97,7 +95,6 @@ function getTasksByUserId(userId) {
     })
     .then((data) => {
       tasks = data;
-      console.log("task by util id :", tasks);
       renderTasks(tasks);
     });
 }
@@ -154,19 +151,15 @@ function setSpansPrioColor() {
   Array.from(spans).forEach(s => {
     switch(s.textContent) {
       case "NONURGENTE" :
-        console.log('NONURGENTE');
         s.classList.add("nonurgent-color");
         break;
         case "NORMALE" :
-          console.log('NORMALE');
           s.classList.add("normal-color");
         break;
         case "URGENTE" :
-          console.log('URGENTE');
           s.classList.add("urgent-color");
         break;
         case "PRIORITAIRE" :
-          console.log('PRIORITAIRE');
           s.classList.add("prioritary-color");
         break;
     }
@@ -178,9 +171,7 @@ function addListenersToDivsTask() {
   Array.from(divs).forEach(d => {
     d.addEventListener("click", (event) => {
       if(event.target.nodeName !== 'BUTTON') {
-        console.log("target : ", event.target);
         const id = d.childNodes[1].textContent;
-        console.log('clic sur id :', id);
         toggleDoneTask(id);
       }
     })
@@ -194,7 +185,6 @@ function toggleDoneTask(id) {
   })
   .then((response) => response.json())
   .then((done) => {
-    console.log("done :", done);
     // sinon erreur : uncaught (in promise) typeerror: networkerror when attempting to fetch resource.
     setTimeout(() => {  getTasksByUserId(userId);; }, 400);
 });
@@ -212,7 +202,6 @@ function createTask(event) {
     };
   
     const bodyReq = JSON.stringify(dataJson);
-    console.log('body :', bodyReq);
     const newTask = fetch(endPoint + "/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -220,7 +209,6 @@ function createTask(event) {
     })
       .then((response) => response.json())
       .then((task) => {
-        console.log("task créé :", task);
         // sinon erreur : uncaught (in promise) typeerror: networkerror when attempting to fetch resource.
         setTimeout(() => {  getTasksByUserId(userId);; }, 400);
     });
@@ -251,7 +239,6 @@ function createTask(event) {
     document.getElementById("div-edit-task").classList.add("mt-5");
     const id = parent.childNodes[1].textContent;
     const taskToEdit = tasks.find(t => t.id === id);
-    console.log("taskToEdit :", taskToEdit);
     renderDivEdit(taskToEdit);
     taskEdited = taskToEdit;
   }
@@ -261,10 +248,10 @@ function createTask(event) {
     const html = `
     <h2 class="text-center mt-2 mb-4">Editer une tâche</h2>
     <form id="form-edit-task">
-      <label for="input-text-edit">Texte :</label>
-      <input type="text" id="input-text-edit" name="input-text-edit"/>
-      <label for="select-prio-edit">Priorité :</label>
-      <select name="select-prio-edit" id="select-prio-edit">
+      <label class="form-label" for="input-text-edit">Texte :</label>
+      <input class="form-control d-inline w-25" type="text" id="input-text-edit" name="input-text-edit"/>
+      <label class="form-label font-bold" for="select-prio-edit">Priorité</label>
+      <select class="form-select form-select-sm w-25 d-inline" name="select-prio-edit" id="select-prio-edit">
         <option value="NONURGENTE" ` + (task.prio === "NONURGENTE" ? "selected" : "") + `>Non urgente</option>
         <option value="NORMALE" ` + (task.prio === "NORMALE" ? "selected" : "") + `>Normale</option>
         <option value="URGENTE" ` + (task.prio === "URGENTE" ? "selected" : "") + `>Urgente</option>
@@ -285,7 +272,6 @@ function createTask(event) {
   }
 
   function updateTask(done) {
-    console.log("update task");
     const text = document.getElementById("input-text-edit").value;
     const prio = document.getElementById("select-prio-edit").value;
     const dataJson = {
@@ -303,7 +289,6 @@ function createTask(event) {
     })
       .then((response) => response.json())
       .then((task) => {
-        console.log("task modifiée :", task);
         document.getElementById("div-edit-task").innerHTML = "";
         // sinon erreur : uncaught (in promise) typeerror: networkerror when attempting to fetch resource.
         setTimeout(() => {  getTasksByUserId(userId);; }, 400);

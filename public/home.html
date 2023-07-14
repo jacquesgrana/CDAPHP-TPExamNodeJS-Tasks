@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>Examen Nodejs</title>
+    <title>Examen Nodejs - Gestion des Tâches</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
@@ -12,16 +12,15 @@
   <body>
 
 
-    <h1 class="text-center margins-y">Page d'Accueil</h1>
-    <label class="my-2 margins-start" for="select-users">Utilisateurs :</label>
-    <select id="select-users" name="select-users">
+    <h1 class="text-center margins-y">Gestion des Tâches</h1>
+    <select class="form-select form-select-sm w-25 margins-start" id="select-users" name="select-users">
     </select>
     <h2 class="text-center margins-y">Ajouter une tâche</h2>
     <form class="my-2 margins-start" id="form-add-task">
-      <label for="input-text-add">Texte :</label>
-      <input type="text" id="input-text-add" name="input-text-add" />
-      <label class="ms-5" for="select-prio-add">Priorité :</label>
-      <select name="select-prio-add" id="select-prio-add">
+      <label class="form-label font-bold" for="input-text-add">Texte</label>
+      <input class="form-control d-inline w-25" type="text" id="input-text-add" name="input-text-add" />
+      <label class="ms-5 form-label font-bold" for="select-prio-add">Priorité</label>
+      <select class="form-select form-select-sm w-25 d-inline" name="select-prio-add" id="select-prio-add">
         <option value="NONURGENTE">Non urgente</option>
         <option value="NORMALE">Normale</option>
         <option value="URGENTE">Urgente</option>
@@ -33,8 +32,8 @@
 
     <h2 class="text-center margins-y">Liste des tâches</h2>
     <h3 class="text-center margins-y">Filtrer les tâches</h3>
-    <label class="my-2 margins-start" for="select-prio-filter" disabled>Priorité :</label>
-      <select name="select-prio-filter" id="select-prio-filter">
+    <label class="my-2 margins-start form-label font-bold" for="select-prio-filter" disabled>Priorité</label>
+      <select class="form-select form-select-sm w-25 d-inline" name="select-prio-filter" id="select-prio-filter">
         <option value="TOUTES" selected>Toutes</option>
         <option value="NONURGENTE">Non urgente</option>
         <option value="NORMALE">Normale</option>
