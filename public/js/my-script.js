@@ -99,8 +99,8 @@ function renderTasks(tasks) {
         t.prio +
         "</p>" +
         "<p class='hidden'>" + t.id + "</p>" + 
-        "<button class='btns-edit' onclick='editTask(event, false)'>Editer</button>" +
-        "<button class='btns-delete' onclick='deleteTask(event)'>Supprimer</button>" +
+        "<button class='btns-edit btn btn-primary' onclick='editTask(event, false)'>Editer</button>" +
+        "<button class='btns-delete btn btn-danger ms-2' onclick='deleteTask(event)'>Supprimer</button>" +
         "</div>"
     });
   divTasksNotDone.innerHTML = htmlContentNotDone;
@@ -119,8 +119,8 @@ function renderTasks(tasks) {
         t.prio +
         "</p>" +
         "<p class='hidden'>" + t.id + "</p>" + 
-        "<button class='btns-edit' onclick='editTask(event, true)'>Editer</button>" +
-        "<button class='btns-delete' onclick='deleteTask(event)'>Supprimer</button>" +
+        "<button class='btns-edit btn btn-primary' onclick='editTask(event, true)'>Editer</button>" +
+        "<button class='btns-delete btn btn-danger ms-2' onclick='deleteTask(event)'>Supprimer</button>" +
         "</div>"
     });
   divTasksDone.innerHTML = htmlContentDone;
@@ -201,6 +201,8 @@ function createTask(event) {
   function editTask(event) {
     event.preventDefault();
     const parent = event.target.parentNode;
+    document.getElementById("div-edit-task").classList.add("paddings");
+    document.getElementById("div-edit-task").classList.add("mt-5");
     const id = parent.childNodes[1].textContent;
     const taskToEdit = tasks.find(t => t.id === id);
     console.log("taskToEdit :", taskToEdit);
@@ -211,7 +213,7 @@ function createTask(event) {
   function renderDivEdit(task) {
     const divEdit = document.getElementById("div-edit-task");
     const html = `
-    <h2>Editer une tâche</h2>
+    <h2 class="text-center mt-2 mb-4">Editer une tâche</h2>
     <form id="form-edit-task">
       <label for="input-text-edit">Texte :</label>
       <input type="text" id="input-text-edit" name="input-text-edit"/>
@@ -222,11 +224,18 @@ function createTask(event) {
         <option value="URGENTE" ` + (task.prio === "URGENTE" ? "selected" : "") + `>Urgente</option>
         <option value="PRIORITAIRE" ` + (task.prio === "PRIORITAIRE" ? "selected" : "") + `>Prioritaire</option>
       </select>
-      <button type="button" onclick="updateTask(${task.done})" id="edit-task-btn">Modifier Tâche</button>
+      <button class="btn btn-success ms-5" type="button" onclick="updateTask(${task.done})" id="edit-task-btn">Modifier Tâche</button>
+      <button class="btn btn-danger ms-2" type="button" onclick="closeEditDiv()" id="edit-task-btn">Annuler</button>
     </form>
     `;
     divEdit.innerHTML = html;
     document.getElementById("input-text-edit").value = task.text;
+  }
+
+  function closeEditDiv() {
+    const divEdit = document.getElementById("div-edit-task").innerHTML = "";
+    document.getElementById("div-edit-task").classList.remove("paddings");
+    document.getElementById("div-edit-task").classList.remove("mt-5");
   }
 
   function updateTask(done) {

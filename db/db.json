@@ -17,21 +17,21 @@
     {
       "id": "indexTask1",
       "text": "faire la vaisselle",
-      "prio": "URGENT",
+      "prio": "URGENTE",
       "done": false,
       "idUtil": "indexUser1"
     },
     {
       "id": "e6b76c4a-7f89-4273-aae1-2093a081e61d",
-      "text": "ggggghhhhh",
+      "text": "respirer",
       "prio": "PRIORITAIRE",
-      "done": false,
+      "done": true,
       "idUtil": "indexUser3"
     },
     {
       "id": "7ede10d5-da88-4190-b837-35e2aa79b88d",
-      "text": "gggggfgggg",
-      "prio": "URGENTE",
+      "text": "mettre de l'essence",
+      "prio": "NORMALE",
       "done": false,
       "idUtil": "indexUser3"
     },
@@ -40,6 +40,13 @@
       "text": "laver la voiture",
       "prio": "URGENTE",
       "done": true,
+      "idUtil": "indexUser2"
+    },
+    {
+      "id": "e8cd18b0-d124-46b8-b6ef-fe6e92d6eef8",
+      "text": "ranger les chiens",
+      "prio": "NORMALE",
+      "done": false,
       "idUtil": "indexUser2"
     }
   ]

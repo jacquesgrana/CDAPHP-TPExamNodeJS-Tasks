@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Examen Nodejs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/my-script.js" defer></script>
   </head>
@@ -10,28 +12,28 @@
   <body>
 
 
-    <h1>Page d'Accueil</h1>
-    <label for="select-users">Utilisateurs :</label>
+    <h1 class="text-center margins-y">Page d'Accueil</h1>
+    <label class="my-2 margins-start" for="select-users">Utilisateurs :</label>
     <select id="select-users" name="select-users">
     </select>
-    <h2>Ajouter une tâche</h2>
-    <form id="form-add-task">
+    <h2 class="text-center margins-y">Ajouter une tâche</h2>
+    <form class="my-2 margins-start" id="form-add-task">
       <label for="input-text-add">Texte :</label>
       <input type="text" id="input-text-add" name="input-text-add" />
-      <label for="select-prio-add">Priorité :</label>
+      <label class="ms-5" for="select-prio-add">Priorité :</label>
       <select name="select-prio-add" id="select-prio-add">
         <option value="NONURGENTE">Non urgente</option>
         <option value="NORMALE">Normale</option>
         <option value="URGENTE">Urgente</option>
         <option value="PRIORITAIRE">Prioritaire</option>
       </select>
-      <button type="button" onclick="createTask(event)" id="create-task-btn">Créer Tâche</button>
+      <button type="button" class="btn btn-success ms-5" onclick="createTask(event)" id="create-task-btn">Créer Tâche</button>
     </form>
-    <div id="div-edit-task"></div>
+    <div class="my-2 margins-start margins-end div-edit-task-class" id="div-edit-task"></div>
 
-    <h2>Liste des tâches</h2>
-    <h3>Filtrer les tâches</h3>
-    <label for="select-prio-filter" disabled>Priorité :</label>
+    <h2 class="text-center margins-y">Liste des tâches</h2>
+    <h3 class="text-center margins-y">Filtrer les tâches</h3>
+    <label class="my-2 margins-start" for="select-prio-filter" disabled>Priorité :</label>
       <select name="select-prio-filter" id="select-prio-filter">
         <option value="TOUTES" selected>Toutes</option>
         <option value="NONURGENTE">Non urgente</option>
@@ -39,10 +41,10 @@
         <option value="URGENTE">Urgente</option>
         <option value="PRIORITAIRE">Prioritaire</option>
       </select>
-    <h3>Tâches à faire</h3>
-    <div id="div-tasks-not-done"></div>
-    <h3>Tâches faites</h3>
-    <div id="div-tasks-done"></div>
+    <h3 class="text-center margins-y">Tâches à faire</h3>
+    <div class="my-2 margins-start margins-end" id="div-tasks-not-done"></div>
+    <h3 class="text-center margins-y">Tâches faites</h3>
+    <div class="my-2 margins-start margins-end" id="div-tasks-done"></div>
     
   </body>
 </html>

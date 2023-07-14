@@ -1,6 +1,7 @@
 body {
     background: lightgrey;
     color: black;
+    padding-bottom: 150px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
@@ -16,4 +17,28 @@ body {
 
   .div-task {
     cursor: pointer;
+    background-color: rgb(170, 169, 169);
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .div-edit-task-class {
+    background-color: rgb(170, 169, 169);
+  }
+
+  .margins-start {
+    margin-left: 150px;
+  }
+
+  .margins-end {
+    margin-right: 150px;
+  }
+
+  .margins-y {
+    margin-top: 80px;
+    margin-bottom: 50px;
+  }
+
+  .paddings {
+    padding: 20px;
   }
