@@ -17,17 +17,17 @@ body {
 
   .div-task {
     cursor: pointer;
-    background-color: rgb(170, 169, 169);
+    background-color: rgb(196, 195, 195);
     padding: 20px;
     margin-top: 20px;
   }
 
   .div-task:hover {
-    background-color: rgb(196, 196, 196);
+    background-color: rgb(221, 220, 220);
   }
 
   .div-edit-task-class {
-    background-color: rgb(170, 169, 169);
+    background-color: rgb(196, 195, 195);
   }
 
   .margins-start {
@@ -56,18 +56,13 @@ body {
   }
 
   .urgent-color {
-    color : orange;
+    color : rgb(172, 112, 0);
   }
 
   .prioritary-color {
-    color: red;
+    color: rgb(201, 0, 0);
   }
 
-  /*
-return "nonurgent-color";
-      case "NORMALE" :
-      return "normal-color";
-      case "URGENTE" :
-      return "urgent-color";
-      case "PRIORITAIRE" :
-  */
+  .span-text-prio {
+    font-weight: bolder;
+  }

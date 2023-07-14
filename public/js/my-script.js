@@ -11,6 +11,23 @@ if (document.location.href.toString().includes("home")) {
   getUsers();
   document.getElementById("create-task-btn").setAttribute("disabled", true);
   document.getElementById("select-prio-filter").setAttribute("disabled", true);
+  document.getElementById("input-text-add").value = "";
+  document.getElementById("select-prio-add").selectedIndex = 1;
+  addListenerChangeInputTextAdd();
+}
+
+function addListenerChangeInputTextAdd() {
+  const inputText = document.getElementById("input-text-add");
+  inputText.addEventListener("input", () => {
+    if ((inputText.value === "") || (userId === "empty")){
+      console.log('vide');
+      document.getElementById("create-task-btn").setAttribute("disabled", true);
+    }
+    else {
+      console.log('pas vide');
+      document.getElementById("create-task-btn").disabled = false;
+    }
+  })
 }
 
 function getUsers() {
@@ -58,7 +75,7 @@ function addListenerSelectUsers() {
     if (selectUsers.value != "empty") {
       getTasksByUserId(selectUsers.value);
       userId = selectUsers.value;
-      document.getElementById("create-task-btn").disabled = false;
+      if (document.getElementById("input-text-add").value !== "") document.getElementById("create-task-btn").disabled = false;
       document.getElementById("select-prio-filter").disabled = false;
 
     } else {
@@ -95,7 +112,7 @@ function renderTasks(tasks) {
         "<div class='div-task'>" +
         "<p>" +
         t.text +
-        " / " +
+        "&nbsp" +
         "<span class='span-text-prio'>" +
         t.prio +
         "</span>" +
@@ -117,7 +134,7 @@ function renderTasks(tasks) {
         "<div class='div-task'>" +
         "<p>" +
         t.text +
-        " / " +
+        "&nbsp" +
         "<span class='span-text-prio'>" +
         t.prio +
         "</span>" +
