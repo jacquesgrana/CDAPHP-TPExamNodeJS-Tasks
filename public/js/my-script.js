@@ -266,9 +266,10 @@ function createTask(event) {
   }
 
   function closeEditDiv() {
-    const divEdit = document.getElementById("div-edit-task").innerHTML = "";
-    document.getElementById("div-edit-task").classList.remove("paddings");
-    document.getElementById("div-edit-task").classList.remove("mt-5");
+    const divEdit = document.getElementById("div-edit-task");
+    divEdit.innerHTML = "";
+    divEdit.classList.remove("paddings");
+    divEdit.classList.remove("mt-5");
   }
 
   function updateTask(done) {
@@ -289,7 +290,7 @@ function createTask(event) {
     })
       .then((response) => response.json())
       .then((task) => {
-        document.getElementById("div-edit-task").innerHTML = "";
+        closeEditDiv();
         // sinon erreur : uncaught (in promise) typeerror: networkerror when attempting to fetch resource.
         setTimeout(() => {  getTasksByUserId(userId);; }, 400);
     });

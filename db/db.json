@@ -17,8 +17,8 @@
     {
       "id": "indexTask1",
       "text": "faire la vaisselle",
-      "prio": "NORMALE",
-      "done": true,
+      "prio": "URGENTE",
+      "done": false,
       "idUtil": "indexUser1"
     },
     {
@@ -67,8 +67,15 @@
       "id": "5349106e-8d71-45b3-b71b-ce865f04ba53",
       "text": "Trier les chaussettes",
       "prio": "PRIORITAIRE",
-      "done": false,
+      "done": true,
       "idUtil": "indexUser1"
+    },
+    {
+      "id": "1ca7d224-a0bc-4098-9c0c-84fb2e0c5339",
+      "text": "faire les courses",
+      "prio": "URGENTE",
+      "done": false,
+      "idUtil": "indexUser2"
     }
   ]
 }

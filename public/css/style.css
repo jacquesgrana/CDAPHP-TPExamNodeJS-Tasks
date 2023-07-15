@@ -63,10 +63,7 @@ body {
     color: rgb(201, 0, 0);
   }
 
+  .font-bold,
   .span-text-prio {
-    font-weight: bolder;
-  }
-
-  .font-bold {
     font-weight: bolder;
   }
