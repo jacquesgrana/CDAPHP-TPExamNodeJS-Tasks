@@ -39,14 +39,14 @@
       "id": "32b034fe-99e5-4329-8521-5c36655e14db",
       "text": "laver la voiture",
       "prio": "URGENTE",
-      "done": true,
+      "done": false,
       "idUtil": "indexUser2"
     },
     {
       "id": "e8cd18b0-d124-46b8-b6ef-fe6e92d6eef8",
       "text": "ranger les chiens",
       "prio": "NORMALE",
-      "done": false,
+      "done": true,
       "idUtil": "indexUser2"
     },
     {

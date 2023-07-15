@@ -2,7 +2,6 @@
 
 let users = [];
 let tasks = [];
-let isFirstCall = true;
 let userId = "empty";
 let taskEdited = {};
 const endPoint = "https://localhost:4443";
@@ -247,18 +246,24 @@ function createTask(event) {
     const divEdit = document.getElementById("div-edit-task");
     const html = `
     <h2 class="text-center mt-2 mb-4">Editer une tâche</h2>
-    <form id="form-edit-task">
+    <form class="d-flex justify-content-center flex-column align-items-start" id="form-edit-task">
+    <div>
       <label class="form-label" for="input-text-edit">Texte :</label>
-      <input class="form-control d-inline w-25" type="text" id="input-text-edit" name="input-text-edit"/>
-      <label class="form-label font-bold" for="select-prio-edit">Priorité</label>
-      <select class="form-select form-select-sm w-25 d-inline" name="select-prio-edit" id="select-prio-edit">
+      <input class="form-control d-inline w-75" type="text" id="input-text-edit" name="input-text-edit"/>
+    </div>
+    <div>
+      <label class="mt-2 form-label font-bold" for="select-prio-edit">Priorité</label>
+      <select class="mt-2 form-select form-select-sm w-50 d-inline" name="select-prio-edit" id="select-prio-edit">
         <option value="NONURGENTE" ` + (task.prio === "NONURGENTE" ? "selected" : "") + `>Non urgente</option>
         <option value="NORMALE" ` + (task.prio === "NORMALE" ? "selected" : "") + `>Normale</option>
         <option value="URGENTE" ` + (task.prio === "URGENTE" ? "selected" : "") + `>Urgente</option>
         <option value="PRIORITAIRE" ` + (task.prio === "PRIORITAIRE" ? "selected" : "") + `>Prioritaire</option>
       </select>
-      <button class="btn btn-success ms-5" type="button" onclick="updateTask(${task.done})" id="edit-task-btn">Modifier Tâche</button>
-      <button class="btn btn-danger ms-2" type="button" onclick="closeEditDiv()" id="edit-task-btn">Annuler</button>
+      </div>
+      <div class="w-100 d-flex justify-content-center">
+      <button class="btn btn-success me-2 mt-2" type="button" onclick="updateTask(${task.done})" id="edit-task-btn">Modifier Tâche</button>
+      <button class="btn btn-danger mt-2" type="button" onclick="closeEditDiv()" id="edit-task-btn">Annuler</button>
+      </div>
     </form>
     `;
     divEdit.innerHTML = html;

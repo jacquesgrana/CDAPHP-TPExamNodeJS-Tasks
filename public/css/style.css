@@ -47,6 +47,10 @@ body {
     padding: 20px;
   }
 
+  .width-div {
+    width:max-content;
+  }
+
   .nonurgent-color {
     color : green;
   }
