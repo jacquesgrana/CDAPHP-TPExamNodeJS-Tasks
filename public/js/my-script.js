@@ -244,11 +244,11 @@ function createTask(event) {
     const html = `
     <h2 class="text-center mt-2 mb-4">Editer une tâche</h2>
     <form class="d-flex justify-content-center flex-column align-items-start" id="form-edit-task">
-    <div>
+    <div class="w-100">
       <label class="form-label" for="input-text-edit">Texte :</label>
       <input class="form-control d-inline w-75" type="text" id="input-text-edit" name="input-text-edit"/>
     </div>
-    <div>
+    <div class="w-100">
       <label class="mt-2 form-label font-bold" for="select-prio-edit">Priorité</label>
       <select class="mt-2 form-select form-select-sm w-50 d-inline" name="select-prio-edit" id="select-prio-edit">
         <option value="NONURGENTE" ` + (task.prio === "NONURGENTE" ? "selected" : "") + `>Non urgente</option>
