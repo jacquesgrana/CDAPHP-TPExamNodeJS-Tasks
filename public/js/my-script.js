@@ -72,18 +72,23 @@ function addListenerSelectUsers() {
     if (selectUsers.value != "empty") {
       getTasksByUserId(selectUsers.value);
       userId = selectUsers.value;
-      if (document.getElementById("input-text-add").value !== "") document.getElementById("create-task-btn").disabled = false;
+      if (document.getElementById("input-text-add").value !== "") {
+        document.getElementById("create-task-btn").disabled = false;}
       document.getElementById("select-prio-filter").disabled = false;
-
-    } else {
+      document.getElementById("select-prio-add").disabled = false;
+      document.getElementById("input-text-add").disabled = false;
+    } 
+    else {
       document.getElementById("div-tasks-not-done").innerHTML = "";
       document.getElementById("div-tasks-done").innerHTML = "";
       userId = "empty";
       document.getElementById("create-task-btn").setAttribute("disabled", true);
       document.getElementById("select-prio-filter").setAttribute("disabled", true);
+      document.getElementById("select-prio-add").setAttribute("disabled", true);
+      document.getElementById("input-text-add").setAttribute("disabled", true);
+      document.getElementById("input-text-add").value = "";
 
     }
-    // faire requete pour recuperer les tasks de cet user
   });
 }
 
@@ -104,8 +109,25 @@ function renderTasks(tasks) {
   tasks
     .filter((t) => t.done === false)
     .forEach((t) => {
-      htmlContentNotDone +=
-        "<div class='div-task'>" +
+      htmlContentNotDone += getHtmlTask(t);
+    });
+  divTasksNotDone.innerHTML = htmlContentNotDone;
+
+
+  const divTasksDone = document.getElementById("div-tasks-done");
+  let htmlContentDone = "";
+  tasks
+    .filter((t) => t.done === true)
+    .forEach((t) => {
+      htmlContentDone += getHtmlTask(t);
+    });
+  divTasksDone.innerHTML = htmlContentDone;
+  addListenersToDivsTask();
+  setSpansPrioColor();
+}
+
+function getHtmlTask(t) {
+  const html = "<div class='div-task'>" +
         "<p>" +
         t.text +
         "&nbsp" +
@@ -116,33 +138,8 @@ function renderTasks(tasks) {
         "<p class='hidden'>" + t.id + "</p>" + 
         "<button class='btns-edit btn btn-primary' onclick='editTask(event, false)'>Editer</button>" +
         "<button class='btns-delete btn btn-danger ms-2' onclick='deleteTask(event)'>Supprimer</button>" +
-        "</div>"
-    });
-  divTasksNotDone.innerHTML = htmlContentNotDone;
-
-
-  const divTasksDone = document.getElementById("div-tasks-done");
-  let htmlContentDone = "";
-  tasks
-    .filter((t) => t.done === true)
-    .forEach((t) => {
-      htmlContentDone +=
-        "<div class='div-task'>" +
-        "<p>" +
-        t.text +
-        "&nbsp" +
-        "<span class='span-text-prio'>" +
-        t.prio +
-        "</span>" +
-        "</p>" +
-        "<p class='hidden'>" + t.id + "</p>" + 
-        "<button class='btns-edit btn btn-primary' onclick='editTask(event, true)'>Editer</button>" +
-        "<button class='btns-delete btn btn-danger ms-2' onclick='deleteTask(event)'>Supprimer</button>" +
-        "</div>"
-    });
-  divTasksDone.innerHTML = htmlContentDone;
-  addListenersToDivsTask();
-  setSpansPrioColor();
+        "</div>";
+  return html;
 }
 
 function setSpansPrioColor() {
