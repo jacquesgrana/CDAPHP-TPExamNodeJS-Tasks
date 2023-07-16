@@ -46,7 +46,7 @@
       "id": "e8cd18b0-d124-46b8-b6ef-fe6e92d6eef8",
       "text": "ranger les chiens",
       "prio": "NORMALE",
-      "done": true,
+      "done": false,
       "idUtil": "indexUser2"
     },
     {
@@ -60,7 +60,7 @@
       "id": "a7bacf71-5f1b-4544-9750-e1beb2509bf5",
       "text": "ranger les chats",
       "prio": "PRIORITAIRE",
-      "done": false,
+      "done": true,
       "idUtil": "indexUser2"
     },
     {
